@@ -35,6 +35,12 @@ define(['model/_cursoModel'], function() {
             if(!attrs.name){
                 validationMessage = "The name can't be empty.";
             }
+            if(!/^([A-Z]){4}$/.test(attrs.programa)){
+                validationMessage = "El codigo del programa tiene formato incorrecto";
+            }
+            if(attrs.programa == ""){
+                validationMessage = "Debe especificar un programa para el curso";
+            }
             if(validationMessage.length>0){
                return validationMessage;
             }
