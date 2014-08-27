@@ -4,11 +4,12 @@
     <table class="table striped">
     <thead>
     <tr>
-		 <th>Name</th>
+		 <th>Nombre</th>
 		 <th>Anios Experiencia</th>
 		 <th>Num Publicaciones</th>
 		 <th>Fecha Vinculacion</th>
-    <th>Actions</th>
+                 <th>Tipo Profesor</th>
+    <th>Acciones</th>
     </tr>
     </thead>
     <tbody>
@@ -18,12 +19,13 @@
 		<td><%= htmlEncode(profesor.getDisplay('aniosExperiencia')) %></td>
 		<td><%= htmlEncode(profesor.getDisplay('numPublicaciones')) %></td>
 		<td><%= htmlEncode(profesor.getDisplay('fechaVinculacion')) %></td>
+                <td><a onclick="Backbone.trigger('<%= componentId %>-profesor-tipo',{aniosExperiencia:<%=htmlEncode(profesor.getDisplay('aniosExperiencia'))%>, numPublicaciones:<%=htmlEncode(profesor.getDisplay('numPublicaciones'))%>,fechaVinculacion:<%=htmlEncode(profesor.getDisplay('fechaVinculacion'))%>}); return false">Ver Tipo</a></td>
     <td>
     <% if(showEdit) {%>
-    <a onclick="Backbone.trigger('<%= componentId %>-profesor-edit',{id:<%= profesor.id %>}); return false" >Edit</a> |
+    <a onclick="Backbone.trigger('<%= componentId %>-profesor-edit',{id:<%= profesor.id %>}); return false" >Editar</a> |
 	<% } %> 
 	<% if(showDelete) {%>
-    <a onclick="Backbone.trigger('<%= componentId %>-profesor-delete',{id:<%= profesor.id %>}); return false" >Delete</a> 
+    <a onclick="Backbone.trigger('<%= componentId %>-profesor-delete',{id:<%= profesor.id %>}); return false" >Eliminar</a> 
 	<% } %>    
 	</td>
     </tr>
@@ -40,7 +42,7 @@
     <input type="hidden" name="id" value="<%= profesor.id %>"/>
     <% }%>
 		<div class="form-group" >
-		<label for="name">Name</label>
+		<label for="name">Nombre</label>
     	<input type="text" class="form-control" id="name" name="name" placeholder="Enter value" value="<%= profesor.get('name') %>"/>	
 		</div>
 		<div class="form-group" >

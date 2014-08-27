@@ -32,7 +32,20 @@ define(['component/_CRUDComponent', 'controller/toolbarController', 'model/toolb
         name: 'profesor',
         model: App.Model.ProfesorModel,
         listModel: App.Model.ProfesorList,
-        controller : App.Controller.ProfesorController
+        controller : App.Controller.ProfesorController,
+        postInit: function(){
+            var self = this;
+            Backbone.on(self.componentId + '-profesor-tipo', function(params) {
+                self.componentController.tipo(params);
+            });
+            this.toolbarModel.set('createName', 'Crear');
+            this.toolbarModel.set('refreshName', 'Refrescar');
+            this.toolbarModel.set('saveName', 'Guardar');
+            this.toolbarModel.set('cancelName', 'Cancelar');
+            this.toolbarModel.set('showPrint', false);
+            this.toolbarModel.set('showSearch', false);
+            this.toolbarModel.set('title', 'Profesor');
+        }
     });
     return App.Component.ProfesorComponent;
 });
